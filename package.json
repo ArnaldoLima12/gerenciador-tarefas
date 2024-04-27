@@ -1,0 +1,29 @@
+{
+  "name": "gerenciador-tarefas",
+  "version": "1.0.0",
+  "description": "Gerenciador de Tarefas",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArnaldoLima12/gerenciador-tarefas.git"
+  },
+  "author": "Geane de Almeida, Davi Lucas, Rafael de Sousa, Gabriel Alves, Arnaldo Lima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArnaldoLima12/gerenciador-tarefas/issues"
+  },
+  "homepage": "https://github.com/ArnaldoLima12/gerenciador-tarefas#readme",
+  "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

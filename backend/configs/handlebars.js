@@ -1,24 +1,21 @@
 const {engine} = require('express-handlebars');
-const path = require('path');
+const {COMPONENTS, LAYOUTS, VIEWS} = require('./contants.js');
 
 const ConfigHandle = (app) =>
-{   
-
-    const baseDir = path.resolve(__dirname, '..','..');
-   
+{      
 
     /**ENGINE DAS VIEWS*/
-    app.engine('html', engine({
+    app.engine('handlebars', engine({
         
-        partialsDir: path.join(baseDir, 'frontend', 'views', 'components'),
-        layoutDir: path.join(baseDir, 'frontend', 'views', 'layouts')
+        partialsDir: COMPONENTS,
+        layoutDir: LAYOUTS
 
     }));
 
-    app.set('view engine', 'html');
+    app.set('view engine', 'handlebars');
 
     /**PASTA RAIZ PARA AS VIEWS*/
-    app.set('views', path.join(baseDir,'frontend', 'views'));
+    app.set('views', VIEWS);
 }
 
 module.exports = ConfigHandle;

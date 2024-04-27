@@ -1,4 +1,4 @@
 exports.index = (req, res) =>
 {
-    res.render('home', {layout: 'master.html'});
+    res.render('home', {layout: 'master'});
 }

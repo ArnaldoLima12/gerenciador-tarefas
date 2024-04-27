@@ -1,11 +1,11 @@
 const express = require('express');
-const path = require('node:path');
+const {STATICS} = require('./configs/contants.js');
 const handle = require('./configs/handlebars.js');
 const App = express();
 const port = 8000;
 
 /**CONFIGURAÇÃO DE ELEMENTOS ESTÁTICOS*/
-App.use(express.static(path.join(__dirname, 'frontend')));
+App.use(express.static(STATICS));
 
 /**PERMISSÃO PARA ENVIO DE FORMULARIOS*/
 App.use(express.urlencoded({extended: true}));

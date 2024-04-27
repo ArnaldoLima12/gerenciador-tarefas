@@ -11,7 +11,7 @@ App.use(express.static(path.join(__dirname, 'frontend')));
 App.use(express.urlencoded({extended: true}));
 
 /**CONFIGURAÇÕES GERAIS DAS VIEWS*/
-handle(App, __dirname);
+handle(App);
 
 /**IMPORTAÇÃO DE ROTAS*/
 const loginRouters = require('./routers/login.js');

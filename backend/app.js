@@ -1,6 +1,8 @@
 const express = require('express');
-const {STATICS} = require('./configs/contants.js');
+const {STATICS} = require('./configs/constants.js');
 const handle = require('./configs/handlebars.js');
+const startSession = require('./configs/session.js')
+const conect = require('./configs/database.js');
 const App = express();
 const port = 8000;
 
@@ -12,6 +14,12 @@ App.use(express.urlencoded({extended: true}));
 
 /**CONFIGURAÇÕES GERAIS DAS VIEWS*/
 handle(App);
+
+/**CONFIGURAÇÕES DE SESSÃO*/
+startSession(App);
+
+/**CONEXÃO COM BANCO DE DADOS*/
+conect();
 
 /**IMPORTAÇÃO DE ROTAS*/
 const loginRouters = require('./routers/login.js');

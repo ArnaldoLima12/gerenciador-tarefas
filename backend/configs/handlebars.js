@@ -1,5 +1,5 @@
 const {engine} = require('express-handlebars');
-const {COMPONENTS, LAYOUTS, VIEWS} = require('./contants.js');
+const {COMPONENTS, LAYOUTS, VIEWS, MASTER} = require('./constants.js');
 
 const ConfigHandle = (app) =>
 {      
@@ -8,7 +8,8 @@ const ConfigHandle = (app) =>
     app.engine('handlebars', engine({
         
         partialsDir: COMPONENTS,
-        layoutDir: LAYOUTS
+        layoutDir: LAYOUTS,
+        defaultLayout: MASTER
 
     }));
 

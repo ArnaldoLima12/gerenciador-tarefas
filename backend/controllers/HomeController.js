@@ -1,5 +1,13 @@
 exports.index = (req, res) =>
 {   
-    let {name, email} = req.session.userLogged;
-    res.send(`Bem-vindo ${name}`);
+    const options = {title: 'Home', erro: req.session.erro};
+    res.render('home', options)
+}
+
+exports.logout = (req, res) =>
+{
+    req.session.destroy(() =>
+    {
+        res.redirect('/');
+    });   
 }

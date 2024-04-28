@@ -6,7 +6,7 @@ const ConfigHandle = (app) =>
 
     /**ENGINE DAS VIEWS*/
     app.engine('handlebars', engine({
-        
+        extname: 'handlebars',
         partialsDir: COMPONENTS,
         layoutDir: LAYOUTS,
         defaultLayout: MASTER

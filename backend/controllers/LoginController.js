@@ -2,7 +2,7 @@ const User = require('../models/UserModel');
 
 exports.index = (req, res) =>
 {   
-    const options = {title: 'Login', erro: req.session.erro}
+    const options = {title: 'Login', erro: req.session.erro, layout: 'other'}
     res.render('login', options);
     req.session.erro = '';
 }

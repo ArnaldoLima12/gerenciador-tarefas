@@ -1,6 +1,5 @@
 auth = (req, res, next) =>
 {   
-    console.log(req.session.logged);
 
     if(req.session && req.session.logged)
     {

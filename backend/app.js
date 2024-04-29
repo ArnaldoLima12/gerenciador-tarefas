@@ -9,6 +9,8 @@ const port = 8000;
 /**CONFIGURAÇÃO DE ELEMENTOS ESTÁTICOS*/
 App.use(express.static(STATICS));
 
+
+App.use(express.json());
 /**PERMISSÃO PARA ENVIO DE FORMULARIOS*/
 App.use(express.urlencoded({extended: true}));
 

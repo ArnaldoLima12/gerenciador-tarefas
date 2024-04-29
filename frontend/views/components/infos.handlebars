@@ -1,0 +1,12 @@
+{{#if info.message}}
+    {{#if (eq info.type 'success')}}
+        <div class="alert bg-green-400 w-1/5 m-auto text-white">
+            <p>{{info.message}}</p>
+        </div>
+    {{else}}
+        <div class="alert bg-red-400 w-1/5 m-auto text-white">
+            <p>{{info.message}}</p>
+        </div>
+    {{/if}}
+{{/if}}
+

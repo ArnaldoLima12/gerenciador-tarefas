@@ -1,0 +1,57 @@
+<!-- Modal -->
+<div class="modal fade" id="equipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nova equipe</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form class="flex justify-between gap-2 items-start">
+
+            <div class="w-2/4">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Descrição</label>
+                    <input type="text" class="form-control" id="description">
+                </div>
+
+                 <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+
+            <div class="w-2/5">
+                <table class="table table-responsive table-sm">
+                    <thead>
+                        <tr>
+                        <th scope="col">Usuario</th>
+                        <th scope="col" class=" text-center">Seleção</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each users}}
+                            <tr>
+                                <td>{{this.name}}</td>
+                                <td class="text-center"><input type="checkbox" class="form-check-input" name="members" value="{{this._id}}"></td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
+            
+           
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

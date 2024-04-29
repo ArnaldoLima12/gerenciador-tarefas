@@ -16,6 +16,7 @@ Router.get('/tarefas', Task.index);
 
 /**ROTAS DE EQUIPES*/
 Router.get('/equipes', Team.index);
+Router.post('/equipes/create-user', Team.createUser);
 
 
 module.exports = Router;

@@ -1,5 +1,6 @@
 const {engine} = require('express-handlebars');
 const {COMPONENTS, LAYOUTS, VIEWS, MASTER} = require('./constants.js');
+const {iguals} = require('../helpers/handlebarsHelpers');
 
 const ConfigHandle = (app) =>
 {      
@@ -9,7 +10,14 @@ const ConfigHandle = (app) =>
         extname: 'handlebars',
         partialsDir: COMPONENTS,
         layoutDir: LAYOUTS,
-        defaultLayout: MASTER
+        defaultLayout: MASTER,
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true, // Permite acessar propriedades do protótipo
+            // allowProtoMethodsByDefault: false,  // Desativa acesso a métodos do protótipo por segurança
+        },
+        helpers: {
+            eq: iguals
+        }
 
     }));
 

@@ -1,25 +1,25 @@
-const {validateAction} = require('../helpers/helper');
+const {validateAction, createToastMessage} = require('../helpers/helper');
 const users = require('../models/UserModel');
 const teams = require('../models/TeamModel');
+const Team = require('../models/TeamModel');
 
 
 exports.index = async (req, res) =>
 {   
-    let userList = await new users().findAll();
-    let info;
-
-    if(req.session.messageSuccess)
-    {
-        info = {message: req.session.messageSuccess, type:'success'};
-        req.session.messageSuccess = '';    
+    const {access} = req.session.userLogged;
+    
+    const [userList, teamsList] = await Promise.all([new users().findAll(), new teams().findAll()]);
+    
+    let info = createToastMessage(req, {message: teamsList.message, type: teamsList.type});
+    
+    const options = {
+        title: 'Equipes',
+        users: userList, 
+        teams: teamsList, 
+        info: info? info : '', 
+        access
     }
-    else
-    {
-        info = {message: req.session.messageErro, type:'erro'};
-        req.session.messageErro = '';
-    }
 
-    const options = {title: 'Equipes', users: userList, info: info? info : ''}
     res.render('team', options)
 }
 
@@ -29,7 +29,7 @@ exports.createUser = async (req, res) =>
 
     let response = await new users().create(user);
 
-    validateAction(response, '/home/equipes', req, res)
+    validateAction(response, '/home/teams', req, res)
 }
 
 exports.createTeam = async (req, res) =>
@@ -43,8 +43,7 @@ exports.createTeam = async (req, res) =>
     }
 
     let response = await new teams().createTeam(team);
-    validateAction(response, '/home/equipes', req, res);
+
+    validateAction(response, '/home/teams', req, res);
 
 }
-
-

@@ -1,0 +1,68 @@
+<!-- Modal -->
+<div class="modal fade" id="projeto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Novo usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form action="/home/teams/create-project" method="POST">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Titulo</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Descrição</label>
+                <input type="email" class="form-control" id="description" name="description">
+            </div>
+
+            <div class="mb-3">
+                <select class="form-select">
+                    <option></option>
+                    {{#each teams}}
+                        <option value="{{this._id}}"><button data-bs-toggle="modal" data-bs-target="#membros-equipe">{{this.name}}</button></option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <button type="submit" class="btn bg-violet-500 hover:bg-violet-600 text-white">Cadastrar</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="membros-equipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Novo usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+            <div class="mb-3">
+            
+                {{#each teams}}
+                       {{#each this.integrantes}}
+                            <p>{{this.name}}</p>
+                       {{/each}}
+                {{/each}}
+            </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

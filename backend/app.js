@@ -29,5 +29,8 @@ const indexRouters = require('./routers/index.js');
 
 App.use('/', loginRouters);
 App.use('/home', indexRouters)
+App.use((req, res, next) => {
+    res.render('error', {title: '404', layout: 'other'})
+});
 
 module.exports = {App, port};

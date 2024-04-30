@@ -8,8 +8,10 @@
     <div>
       <ul class="hidden sm:flex sm:flex-1 sm:gap-x-12 items-center">
         <li><a class="text-base font-semibold hover:text-violet-700" href="/home">Home</a></li>
-        <li><a class="text-base font-semibold hover:text-violet-700" href="/home/tarefas">Tarefas</a></li>
-        <li><a class="text-base font-semibold hover:text-violet-700" href="/home/equipes">Equipes</a></li>
+        {{#if access}}
+        <li><a class="text-base font-semibold hover:text-violet-700" href="/home/tasks">Tarefas</a></li>
+        <li><a class="text-base font-semibold hover:text-violet-700" href="/home/teams">Equipes</a></li>
+        {{/if}}
       </ul>
     </div>
 

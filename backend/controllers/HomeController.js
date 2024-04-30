@@ -1,6 +1,9 @@
 exports.index = (req, res) =>
 {   
-    const options = {title: 'Home', erro: req.session.erro};
+    const {access} = req.session.userLogged;
+    
+
+    const options = {title: 'Home', erro: req.session.erro, access};
     res.render('home', options)
 }
 

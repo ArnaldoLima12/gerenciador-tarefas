@@ -1,4 +1,5 @@
 const {users} = require('../models/schemas');
+const {response} = require('../helpers/helper');
 
 class User
 {   
@@ -9,26 +10,11 @@ class User
         try
         {
             await users.create(user);
-            
-            let response = {
-                
-                status: true,
-                message: 'Usuario cadastrado com sucesso'
-            }
-            
-            return response;
+            return response(true, 'Usuario cadastrado com sucesso');
         }
         catch(erro)
         {   
-            console.log(erro);
-
-            let response = {
-                
-                status: false,
-                message: 'Erro ao cadastrar usuario'
-            }
-
-            return response
+            return response(false, 'Erro ao cadastrar usuario');
         }
     }
 

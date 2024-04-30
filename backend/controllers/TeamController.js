@@ -1,4 +1,7 @@
+const {validateAction} = require('../helpers/helper');
 const users = require('../models/UserModel');
+const teams = require('../models/TeamModel');
+
 
 exports.index = async (req, res) =>
 {   
@@ -26,20 +29,22 @@ exports.createUser = async (req, res) =>
 
     let response = await new users().create(user);
 
-    validate(response, '/home/equipes', req, res)
+    validateAction(response, '/home/equipes', req, res)
 }
 
-
-const validate = (response, redirect, req, res) =>
+exports.createTeam = async (req, res) =>
 {
-    if(response.status)
-    {   
-        req.session.messageSuccess = response.message;
-        res.redirect(redirect);
+    const {name, description, members} = req.body;
+    
+    const team = {
+        name,
+        description,
+        members: Array.isArray(members) ? members : [members]
     }
-    else
-    {
-        req.session.messageErro = response.message;
-        res.redirect(redirect);
-    }
+
+    let response = await new teams().createTeam(team);
+    validateAction(response, '/home/equipes', req, res);
+
 }
+
+

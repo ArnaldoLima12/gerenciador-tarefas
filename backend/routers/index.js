@@ -11,12 +11,13 @@ Router.get('/logout', Home.logout);
 
 
 /**ROTAS DE TAREFAS*/
-Router.get('/tarefas', Task.index);
+Router.get('/tarefas', auth, Task.index);
 
 
 /**ROTAS DE EQUIPES*/
-Router.get('/equipes', Team.index);
-Router.post('/equipes/create-user', Team.createUser);
+Router.get('/equipes', auth, Team.index);
+Router.post('/equipes/create-user', auth, Team.createUser);
+Router.post('/equipes/create-team', auth, Team.createTeam);
 
 
 module.exports = Router;

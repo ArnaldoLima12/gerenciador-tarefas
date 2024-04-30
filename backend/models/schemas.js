@@ -31,4 +31,4 @@ const users = mongoose.model('users', userSchema);
 const teams = mongoose.model('teams', teamSchema);
 const projects = mongoose.model('projects', projectSchema);
 
-module.exports = {users, teams}
+module.exports = {users, teams, projects}

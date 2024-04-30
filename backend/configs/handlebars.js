@@ -1,6 +1,6 @@
 const {engine} = require('express-handlebars');
 const {COMPONENTS, LAYOUTS, VIEWS, MASTER} = require('./constants.js');
-const {iguals} = require('../helpers/handlebarsHelpers');
+const {iguals, date} = require('../helpers/handlebarsHelpers');
 
 const ConfigHandle = (app) =>
 {      
@@ -16,7 +16,8 @@ const ConfigHandle = (app) =>
             // allowProtoMethodsByDefault: false,  // Desativa acesso a métodos do protótipo por segurança
         },
         helpers: {
-            eq: iguals
+            eq: iguals,
+            dt: date
         }
 
     }));

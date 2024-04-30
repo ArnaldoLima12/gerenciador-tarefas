@@ -1,12 +1,51 @@
+<!-- Renderiza o toast ou o alerta conforme a condição -->
 {{#if info.message}}
-    {{#if (eq info.type 'success')}}
-        <div class="alert bg-green-400 w-1/5 m-auto text-white">
-            <p>{{info.message}}</p>
-        </div>
-    {{else}}
-        <div class="alert bg-red-400 w-1/5 m-auto text-white">
-            <p>{{info.message}}</p>
-        </div>
-    {{/if}}
-{{/if}}
+    
+  {{#if (eq info.type 'success')}}
+      
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="/imgs/success.png" class="rounded me-2 w-5 h-5" alt="sucesso">
+            <strong class="me-auto">Sucesso</strong>
+            <small>{{dt}}</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
 
+          <div class="toast-body">
+              {{info.message}}
+          </div>
+      </div>
+    </div>
+
+  {{else}}
+     <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="/imgs/erro.png" class="rounded me-2 w-5 h-5" alt="sucesso">
+            <strong class="me-auto">Erro</strong>
+            <small>{{dt}}</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          
+          <div class="toast-body">
+              {{info.message}}
+          </div>
+      </div>
+    </div>
+    
+  {{/if}}
+
+  <!-- Script para inicializar e mostrar o toast -->
+   <script>
+    let element = document.querySelector('.toast');
+    
+    if (element) {
+
+      let toast = new bootstrap.Toast(element);
+      toast.show(); 
+
+    }
+  </script>
+
+{{/if}}

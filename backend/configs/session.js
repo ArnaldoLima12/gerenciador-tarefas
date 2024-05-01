@@ -16,7 +16,7 @@ const startSession = app =>
         
         {
             secret: 'Projeto Faculdade',
-            resave: true,
+            resave: false,
             saveUninitialized: true,
             store: MongoStore.create(optionsMongo),
             cookie: {secure: false, maxAge: 24 * 60 * 60 * 1000},

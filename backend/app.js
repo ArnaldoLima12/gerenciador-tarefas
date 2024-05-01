@@ -1,5 +1,5 @@
 const express = require('express');
-const {STATICS} = require('./configs/constants.js');
+const {STATICS, GENERATEPATH} = require('./configs/constants.js');
 const handle = require('./configs/handlebars.js');
 const startSession = require('./configs/session.js')
 const conect = require('./configs/database.js');
@@ -30,7 +30,7 @@ const indexRouters = require('./routers/index.js');
 App.use('/', loginRouters);
 App.use('/home', indexRouters)
 App.use((req, res, next) => {
-    res.render('error', {title: '404', layout: 'other'})
+    res.render('error', {title: '404', layout: GENERATEPATH('other')})
 });
 
 module.exports = {App, port};

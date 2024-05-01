@@ -1,5 +1,5 @@
 <header>
-  <nav class=" mx-auto flex p-4 items-center justify-between">
+  <nav class=" mx-auto flex p-4 items-center justify-between border-b">
 
     <div class="flex lg:flex-1">
       <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600">
@@ -7,16 +7,13 @@
 
     <div>
       <ul class="hidden sm:flex sm:flex-1 sm:gap-x-12 items-center">
-        <li><a class="text-base font-semibold hover:text-violet-700" href="/home">Home</a></li>
-        {{#if access}}
-        <li><a class="text-base font-semibold hover:text-violet-700" href="/home/tasks">Tarefas</a></li>
-        <li><a class="text-base font-semibold hover:text-violet-700" href="/home/teams">Equipes</a></li>
-        {{/if}}
+        <li><a class="text-base font-semibold {{#if home}} text-violet-500 {{/if}} hover:text-violet-700" href="/home">Home</a></li>
+        <li><a class="text-base font-semibold {{#if task}} text-violet-500 {{/if}} hover:text-violet-700" href="/home/tasks">Tarefas</a></li>
       </ul>
     </div>
 
     <div class="hidden sm:flex lg:flex-1 lg:justify-end">
-      <a href="/home/logout" class="text-base font-semibold hover:text-violet-700 ease-linear">Logout</a>
+      <a href="/home/logout" class="text-base font-semibold hover:text-violet-700 ease-linear">Sair</a>
     </div>
   </nav>
 </header>

@@ -1,6 +1,6 @@
 const {engine} = require('express-handlebars');
 const {COMPONENTS, LAYOUTS, VIEWS, MASTER} = require('./constants.js');
-const {iguals, date} = require('../helpers/handlebarsHelpers');
+const {iguals, date, formatDate} = require('../helpers/handlebarsHelpers');
 
 const ConfigHandle = (app) =>
 {      
@@ -17,7 +17,8 @@ const ConfigHandle = (app) =>
         },
         helpers: {
             eq: iguals,
-            dt: date
+            dt: date,
+            fdt: formatDate
         }
 
     }));

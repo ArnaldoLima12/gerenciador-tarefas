@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 const Home = require('../controllers/HomeController');
 const Task = require('../controllers/TaskController');
-const Team = require('../controllers/TeamController');
+const Project = require('../controllers/ProjectController');
 const {auth} = require('../middlewares/auth');
 
 
@@ -14,10 +14,9 @@ Router.get('/logout', Home.logout);
 Router.get('/tasks', auth(true), Task.index);
 
 
-/**ROTAS DE EQUIPES*/
-Router.get('/teams', auth(true), Team.index);
-Router.post('/teams/create-user', auth(true), Team.createUser);
-Router.post('/teams/create-team', auth(true), Team.createTeam);
+/**ROTAS DE PROJETOS*/
+Router.get('/project/:projeto', auth(true), Project.index)
+Router.post('/project/create-project', auth(true), Project.createProject);
 
 
 module.exports = Router;

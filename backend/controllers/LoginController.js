@@ -1,8 +1,9 @@
 const User = require('../models/UserModel');
+const {GENERATEPATH} = require('../configs/constants');
 
 exports.index = (req, res) =>
 {   
-    const options = {title: 'Login', erro: req.session.erro, layout: 'other'}
+    const options = {title: 'Login', erro: req.session.erro, layout: GENERATEPATH('other')};
     res.render('login', options);
     req.session.erro = '';
 }

@@ -7,7 +7,16 @@
                     <div class="w-full flex text-lg text-center">
                         <a class="flex-grow text-center" href="/home/project/{{this._id}}">{{this.title}}</a> 
                     </div>
-                    <button type="button" class="" data-bs-toggle="popover" data-bs-title="Compartilhe" data-bs-content="{{this._id}}" data-bs-custom-class="custom-popover"><i class="bi bi-three-dots-vertical"></i></button> 
+                   
+                   <div class="btn-group" role="group">
+                        <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Compartilhe</a></li>
+                            <li><a class="dropdown-item" href="#">Editar</a></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="p-2">

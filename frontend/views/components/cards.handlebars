@@ -1,0 +1,24 @@
+<div class="flex gap-4 flex-wrap">
+    {{#if cards}}
+        {{#each cards}}
+            <div class=" border border-black flex flex-col gap-1 min-w-60">
+                
+                <div class="flex border-b border-slate-600 p-1 text-white" style="background-color: {{this.color}};">
+                    <div class="w-full flex text-lg text-center">
+                        <a class="flex-grow text-center" href="/home/project/{{this._id}}">{{this.title}}</a> 
+                    </div>
+                    <button type="button" class="" data-bs-toggle="popover" data-bs-title="Compartilhe" data-bs-content="{{this._id}}" data-bs-custom-class="custom-popover"><i class="bi bi-three-dots-vertical"></i></button> 
+                </div>
+
+                <div class="p-2">
+                    <p class="text-sm text-muted"><span class="font-bold">Início:</span> {{fdt this.dueDate}}</p>
+                    <p class="text-sm text-muted"><span class="font-bold">Término:</span> {{fdt this.created_at}}</p>
+                    <p class="text-sm text-muted"><span class="font-bold">Criado por:</span> {{this.creator}}</p>
+                </div>
+
+            </div>
+        {{/each}}
+    {{else}}
+        <div>Nenhum projeto criado</div>
+    {{/if}}
+</div>

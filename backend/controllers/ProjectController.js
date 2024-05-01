@@ -43,15 +43,17 @@ exports.index = async (req, res) =>
 
 exports.createProject = async (req, res) =>
 {
-    const {title, description, dueDate} = req.body;
+    const {title, description, dueDate, color} = req.body;
   
     const project = {
         
         title,
         description,
-        dueDate,
+        creator: req.session.userLogged.name,
         members: [req.session.userLogged._id],
-        admins: [req.session.userLogged._id]
+        admins: [req.session.userLogged._id],
+        color,
+        dueDate,
     }
 
     let response = await new Project().create(project);

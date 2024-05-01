@@ -2,20 +2,22 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
 
-        name: {type: String, required: true},
-        email: {type: String, required: true},
-        password: {type: String, required: true},
-        access: {type: Boolean, default: false},
-        projects: [{type: mongoose.Schema.Types.ObjectId, ref: 'projects'}]
+    name: {type: String, required: true},
+    email: {type: String, required: true},
+    password: {type: String, required: true},
+    access: {type: Boolean, default: false},
+    projects: [{type: mongoose.Schema.Types.ObjectId, ref: 'projects'}]
 });
 
 const projectSchema = new mongoose.Schema({
     
     title: { type: String, required: true },
     description: { type: String },
+    creator: {type: String, required: true},
     members: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
-    tasks: [{type: mongoose.Schema.Types.ObjectId, ref: 'tasks'}],
     admins: [{type: mongoose.Schema.Types.ObjectId, ref: 'users'}],
+    tasks: [{type: mongoose.Schema.Types.ObjectId, ref: 'tasks'}],
+    color: {type: String, required: true},
     created_at: { type: Date, default: Date.now },
     dueDate: { type: Date, required: true },
 

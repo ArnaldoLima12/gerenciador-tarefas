@@ -71,47 +71,56 @@ class Project
     findAll = async userId => 
     {
       try
-      {
-        let response = await projects.find({$or: [{members: userId, admins: userId}]}, {title: 1, description: 1, dueDate: 1})
+      { 
+        const pipeline = [
+            {
+              '$match': {
+                '$or': [
+                  {
+                    'admins': {
+                      '$eq': new mongoose.Types.ObjectId(userId)
+                    }
+                  }, {
+                    'members': {
+                      '$eq': new mongoose.Types.ObjectId(userId)
+                    }
+                  }
+                ]
+              }
+            }, {
+              '$lookup': {
+                'from': 'users', 
+                'localField': 'admins', 
+                'foreignField': '_id', 
+                'as': 'admins'
+              }
+            }, {
+              '$lookup': {
+                'from': 'users', 
+                'localField': 'members', 
+                'foreignField': '_id', 
+                'as': 'members'
+              }
+            }, {
+              '$project': {
+                'title': 1, 
+                'dueDate': 1, 
+                'created_at': 1, 
+                'creator': 1,
+                'color': 1
+              }
+            }
+        ];
+
+        let response = await projects.aggregate(pipeline);
         return response;
+      
       }
       catch(erro)
       {
         return response(false, 'Não foi possivel carregar lista de projetos!');
       }
     }
-
-    // findAll = async () =>
-    // {
-    //     try
-    //     {
-    //         const pipeline = [
-    //             {
-    //               $lookup: {
-    //                 from: 'users',
-    //                 localField: 'members',
-    //                 foreignField: '_id', // Corrigido
-    //                 as: 'integrantes'
-    //               },
-    //             },
-    //             {
-    //               $project: {
-    //                 name: 1,
-    //                 description: 1,
-    //                 'integrantes.name': 1, // Corrigido para acessar 'name' dentro de 'integrantes'
-    //               },
-    //             },
-    //           ];
-
-    //         let response = await projects.aggregate(pipeline);
-              
-    //         return response;
-    //     }
-    //     catch(erro)
-    //     {   
-    //         return response(false, 'Não foi possivel carregar equipes')
-    //     }
-    // }
 }
 
 module.exports = Project;

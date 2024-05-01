@@ -3,6 +3,17 @@
         <h2>{{project.title}}</h2>
         <p>{{project.description}}</p>
         <p>{{fdt project.dueDate}}</p>
+
+        {{#each project.administradores}}
+            <p>administradores</p>
+            <p>{{this.name}}</p>
+        {{/each}}
+
+        {{#each project.integrantes}}
+            <p>membros</p>
+            <p>{{this.name}}</p>
+        {{/each}}
+
     {{/if}}
 </div>
 

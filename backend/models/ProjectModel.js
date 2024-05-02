@@ -54,7 +54,8 @@ class Project
                 }, 
                 administradores: {
                   name: 1
-                }
+                },
+                creator: 1
               }
             }
         ];
@@ -103,7 +104,8 @@ class Project
               }
             }, {
               '$project': {
-                'title': 1, 
+                'title': 1,
+                'description': 1, 
                 'dueDate': 1, 
                 'created_at': 1, 
                 'creator': 1,

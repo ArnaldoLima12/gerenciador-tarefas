@@ -8,12 +8,23 @@ const date = () => {
     return new Date().toLocaleTimeString();
 }
 
-const formatDate = datetime => {
+const formatDate = (datetime, format) => {
     
     if(datetime)
     {   
-        datetime = new Date(datetime).toLocaleDateString(undefined, {day: 'numeric', month: 'long', year: 'numeric'});
-        return datetime;
+
+        if(format === 'long')
+        {
+            return datetime = new Date(datetime).toLocaleDateString(undefined, {day: 'numeric', month: 'long', year: 'numeric'});
+        }
+        else if(format === 'numeric')
+        {
+           return datetime = new Date(datetime).toLocaleDateString(undefined, {day: 'numeric', month: 'numeric', year: 'numeric'});
+        }
+        else
+        {
+            return datetime;
+        }
     }
 }
 module.exports = {iguals, date, formatDate}

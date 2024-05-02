@@ -4,7 +4,8 @@
   "description": "Gerenciador de Tarefas",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "tailwind": "npx tailwindcss -i ./frontend/styles/input.css -o ./frontend/styles/output.css --watch"
   },
   "repository": {
     "type": "git",

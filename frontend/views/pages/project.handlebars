@@ -1,7 +1,7 @@
-<div class="flex gap-3 px-2 py-4 w-full">
+<div class="flex gap-3 px-2 py-4 w-full h-full">
     {{#if project}}
         
-        <div class="flex flex-col justify-between items-center border border-slate-500 w-1/4 rounded-md p-2 gap-2">
+        <div class="flex flex-col items-center border border-slate-500 w-1/4 rounded-md p-2 gap-2">
 
             <div class="w-full border-b border-slate-300 py-1">
                  <h2 class="text-xl ">{{project.title}}</h2>
@@ -33,7 +33,37 @@
         </div>
 
         <div class="w-5/6 border border-slate-500 rounded-md p-3">
-           
+           <div class="border-b border-slate-500">
+                <h1 class="text-xl">Quadro de tarefas</h1>
+           </div>
+
+           <div class="flex justify-between flex-grow gap-2 overflow-auto min-h-80">
+                <div class="border border-slate-800 min-w-60 mt-2 p-2">
+                    <div class="w-full bg-red-300 text-center uppercase flex justify-between" role="group" >
+                            <p class="text-center w-full" >A fazer</p>
+                            <button type="button" class="hover:cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false">
+                               <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                       
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Compartilhe</a></li>
+                                <li><a class="dropdown-item" href="#">Editar</a></li>
+                            </ul>
+                    </div> 
+                </div>
+
+                <div class="border border-slate-800 min-w-60 mt-2 p-2"> 
+                    <div class=" bg-orange-300 text-center uppercase">Em andamento</div>
+                </div>
+
+                <div class=" border border-slate-800 min-w-60 mt-2 p-2">
+                    <div class=" bg-green-300 text-center uppercase">Concluido</div>
+                </div>
+
+                <div class=" border border-slate-800 min-w-60 mt-2 p-2">
+                    <div class=" bg-blue-300 text-center uppercase">Pausado</div>
+                </div>
+           </div>
         </div>     
     {{/if}}
 </div>

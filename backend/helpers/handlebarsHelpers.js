@@ -27,4 +27,5 @@ const formatDate = (datetime, format) => {
         }
     }
 }
+
 module.exports = {iguals, date, formatDate}

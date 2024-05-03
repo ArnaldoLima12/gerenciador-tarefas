@@ -25,10 +25,12 @@ const projectSchema = new mongoose.Schema({
 
 const tasksSchema = new mongoose.Schema({
 
+    project: {type: mongoose.Schema.Types.ObjectId, ref: 'projects', required: true},
     title: {type: String, required: true},
     description: {type: String, required: true},
-    responsible: {type: mongoose.Schema.Types.ObjectId, ref: 'users', require: true},
-    dataLimite: {type: Date, required: true}
+    responsibles: [{type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true}],
+    status: {type: String, required: true}
+    // dataLimite: {type: Date, required: true}
 
 });
 

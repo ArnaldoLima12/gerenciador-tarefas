@@ -1,5 +1,6 @@
 const {validateAction, createToastMessage} = require('../helpers/helper');
 const Project = require('../models/ProjectModel');
+const Task = require('../models/TaskModel');
 
 
 
@@ -63,4 +64,31 @@ exports.findAllProjects = async req =>
 {
     const projects = await new Project().findAll(req.session.userLogged._id);
     return projects;
+}
+
+exports.createTask = async (req, res) =>
+{
+    const {project, title, description, members, status} = req.body;
+
+    const task = {
+
+        project,
+        title,
+        description,
+        responsibles: [members],
+        status
+    }
+
+    if(!title || !description || members.length < 1 || !status)
+    {   
+        console.log(task);
+        validateAction({status: false, message: 'Todos os campos devem ser preenchidos!'}, `/home/project/${project}`, req, res);
+        return;
+    }
+    
+    
+    let taskSave = await new Task().create(task);
+    let response = await new Project().updateInTasks(project, taskSave._id);
+
+    validateAction(response, `/home/project/${project}`, req, res);
 }

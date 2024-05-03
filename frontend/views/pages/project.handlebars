@@ -39,29 +39,19 @@
 
            <div class="flex justify-between flex-grow gap-2 overflow-auto min-h-80">
                 <div class="border border-slate-800 min-w-60 mt-2 p-2">
-                    <div class="w-full bg-red-300 text-center uppercase flex justify-between" role="group" >
-                            <p class="text-center w-full" >A fazer</p>
-                            <button type="button" class="hover:cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false">
-                               <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                       
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Compartilhe</a></li>
-                                <li><a class="dropdown-item" href="#">Editar</a></li>
-                            </ul>
-                    </div> 
+                   {{>dropdownMenu title='A fazer' color='bg-red-300'}}
                 </div>
 
-                <div class="border border-slate-800 min-w-60 mt-2 p-2"> 
-                    <div class=" bg-orange-300 text-center uppercase">Em andamento</div>
+                <div class="border border-slate-800 min-w-60 mt-2 p-2">
+                    {{>dropdownMenu title='Em andamento' color='bg-orange-300'}}
                 </div>
 
                 <div class=" border border-slate-800 min-w-60 mt-2 p-2">
-                    <div class=" bg-green-300 text-center uppercase">Concluido</div>
+                    {{>dropdownMenu title='Pausado' color='bg-blue-300'}}
                 </div>
 
                 <div class=" border border-slate-800 min-w-60 mt-2 p-2">
-                    <div class=" bg-blue-300 text-center uppercase">Pausado</div>
+                     {{>dropdownMenu title='Concluido' color='bg-green-300'}}
                 </div>
            </div>
         </div>     
@@ -69,3 +59,5 @@
 </div>
 
 {{>infos}}
+{{>modalTask}}
+<script src="/js/scripts/newTask.js"></script>

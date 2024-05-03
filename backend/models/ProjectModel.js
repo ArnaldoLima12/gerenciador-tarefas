@@ -50,6 +50,7 @@ class Project
                 dueDate: 1, 
                 created_at: 1, 
                 integrantes: {
+                  _id: 1,
                   name: 1
                 }, 
                 administradores: {
@@ -121,6 +122,19 @@ class Project
       catch(erro)
       {
         return response(false, 'Não foi possivel carregar lista de projetos!');
+      }
+    }
+
+    updateInTasks = async (projectId, taskId) =>
+    {
+      try
+      {
+        await projects.findByIdAndUpdate(projectId, {$push: {tasks: taskId}});
+        return response(true, 'Tarefa adicionada com sucesso');
+      }
+      catch(erro)
+      {
+        return response(false, 'Erro ao conectar-se a base de dados!');
       }
     }
 }

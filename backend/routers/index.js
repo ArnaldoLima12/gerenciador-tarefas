@@ -10,7 +10,7 @@ Router.get('/', auth, Home.index);
 Router.get('/logout', Home.logout);
 
 /**ROTAS DE PROJETOS*/
-Router.get('/project/item/:projeto', auth, Project.index)
+Router.get('/project/content/:projeto', auth, Project.index)
 Router.post('/project/create-project', auth, Project.createProject);
 Router.post('/project/create-task', auth, Project.createTask);
 

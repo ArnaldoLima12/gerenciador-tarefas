@@ -35,12 +35,12 @@ const renderTask = data =>
 const createElement = (element, color) =>
 {   
     let render = 
-    `<div class='bg-${color}-200 my-2 p-2' draggable='true'>
+    `<div ondragstart="onDragStart(event)" class='bg-${color}-200 my-2 p-2' draggable='true' id='${element._id}'>
         <p class='font-bold'>${element.title}</p>
         <p class=''>${element.description}</p>
     </div>`;
 
-    return render;
+    return render; 
 }
 
 loadData();

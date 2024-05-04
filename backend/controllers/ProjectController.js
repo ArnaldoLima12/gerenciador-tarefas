@@ -82,12 +82,12 @@ exports.createTask = async (req, res) =>
     if(!title || !description || members.length < 1 || !status)
     {   
         console.log(task);
-        validateAction({status: false, message: 'Todos os campos devem ser preenchidos!'}, `/home/project/${project}`, req, res);
+        validateAction({status: false, message: 'Todos os campos devem ser preenchidos!'}, `/home/project/content/${project}`, req, res);
         return;
     }
     
     let taskSave = await new Task().create(task);
     let response = await new Project().updateInTasks(project, taskSave);
 
-    validateAction(response, `/home/project/${project}`, req, res);
+    validateAction(response, `/home/project/content/${project}`, req, res);
 }

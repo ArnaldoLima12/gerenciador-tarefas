@@ -9,7 +9,7 @@
       <div class="modal-body">
         
         <form id="formTask" class="flex justify-between gap-2 items-start" action="/home/project/create-task" method="POST">
-            <input type="hidden" name="project" value="{{project._id}}">
+            <input type="hidden" name="project" id="identifier" value="{{project._id}}">
             <div class="w-2/4">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Nome</label>

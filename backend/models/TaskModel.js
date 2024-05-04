@@ -7,12 +7,25 @@ class Task
     {
         try
         {
-            let response = await tasks.create(task)
+            let response = await tasks.create(task);
             return response._id;
         }
         catch(error)
         {
-            response(false, 'Não foi possivel cadastrar a tarefa');
+            return response(false, 'Não foi possivel cadastrar a tarefa');
+        }
+    }
+
+    findAll = async projectId =>
+    {
+        try
+        {   
+            let response = await tasks.find({project: projectId});
+            return response; 
+        }
+        catch(error)
+        {
+            return response(false, 'Não foi possivel conectar-se a base de dados!');
         }
     }
 }

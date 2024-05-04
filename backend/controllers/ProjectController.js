@@ -75,7 +75,7 @@ exports.createTask = async (req, res) =>
         project,
         title,
         description,
-        responsibles: [members],
+        responsibles: members.length < 2? [members] : members,
         status
     }
 
@@ -86,9 +86,8 @@ exports.createTask = async (req, res) =>
         return;
     }
     
-    
     let taskSave = await new Task().create(task);
-    let response = await new Project().updateInTasks(project, taskSave._id);
+    let response = await new Project().updateInTasks(project, taskSave);
 
     validateAction(response, `/home/project/${project}`, req, res);
 }

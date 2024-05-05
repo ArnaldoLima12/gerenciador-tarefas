@@ -60,6 +60,16 @@ exports.createProject = async (req, res) =>
     validateAction(response, '/home', req, res);
 }
 
+exports.enterProject = async (req, res) => {
+
+    const {code} = req.body;
+    
+    let response = await new Project().addMember(code, req.session.userLogged._id);
+
+    validateAction(response, '/home', req, res);
+
+}
+
 exports.findAllProjects = async req =>
 {
     const projects = await new Project().findAll(req.session.userLogged._id);

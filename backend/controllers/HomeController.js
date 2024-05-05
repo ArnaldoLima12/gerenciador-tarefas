@@ -14,6 +14,8 @@ exports.index = async (req, res) =>
         cards = '';
     }
 
+    // console.log(cards);
+
     const options = {
         
         title: 'Home',

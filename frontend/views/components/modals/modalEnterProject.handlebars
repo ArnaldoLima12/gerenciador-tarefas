@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="enter-project" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Entrar em um projeto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form action="/home/project/enter-project" method="POST">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Código</label>
+                <input type="text" class="form-control" id="code" name="code">
+            </div>
+
+            <button type="submit" class="btn bg-violet-500 hover:bg-violet-600 text-white">Entrar</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

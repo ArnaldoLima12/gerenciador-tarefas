@@ -17,18 +17,28 @@ const onDrop = (e, nextColor) =>
     const draggableElement = document.getElementById(id);
     const dropzone = e.target;
 
-    const drops = ['toDO','InProgress', 'Paused', 'Concluded'];
+    const drops = ['To Do','In Progress', 'Paused', 'Concluded'];
 
     if(drops.indexOf(dropzone.id) != -1)
     { 
       dropzone.appendChild(draggableElement);
       draggableElement.style.backgroundColor = nextColor;
       e.dataTransfer.clearData();
+
+      resave(drops[drops.indexOf(dropzone.id)], draggableElement.id);
     }
     else
     {
-      console.log(drops.indexOf(dropzone.id));
-      console.log(dropzone.id);
       e.dataTransfer.clearData();
     }
+}
+
+const resave = (status, taskId) =>
+{ 
+
+  fetch('/home/project/task-resave', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({status, taskId})
+  })
 }

@@ -1,6 +1,6 @@
 const identifier = document.getElementById('identifier').value;
-const containerToDO = document.getElementById('toDO');
-const containerInProgress = document.getElementById('InProgress');
+const containerToDO = document.getElementById('To Do');
+const containerInProgress = document.getElementById('In Progress');
 const containerPaused = document.getElementById('Paused');
 const containerConcluded = document.getElementById('Concluded');
 
@@ -10,7 +10,7 @@ const loadData = () => {
     fetch(`/home/project/task-load/${identifier}`)
     .then(async response => {
         let data = await response.json();
-        console.log(data);
+        // console.log(data);
         renderTask(data);
     })
     .catch(error => console.log(error));
@@ -23,7 +23,7 @@ const renderTask = data =>
        
         switch(element.status)
         {
-            case 'To do':
+            case 'To Do':
                 containerToDO.innerHTML += createElement(element, '#FCC8CD');
                 break;
             case 'In Progress':

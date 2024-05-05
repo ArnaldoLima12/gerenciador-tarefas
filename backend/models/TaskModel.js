@@ -16,6 +16,18 @@ class Task
         }
     }
 
+    resave = async (status, taskId) =>
+    {   
+        try
+        {
+            await tasks.findOneAndUpdate({_id: taskId}, {status})
+        }
+        catch(error)
+        {
+            return response(false, 'Não foi possivel atualizar');
+        }
+    }
+
     findAll = async projectId =>
     {
         try

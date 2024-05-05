@@ -17,6 +17,19 @@ class Project
         }
     }
 
+    addMember = async (id, memberId) => {
+
+      try
+      {
+         await projects.findOneAndUpdate({_id: id}, {$push: {members: memberId}});
+         return response(true, 'Projeto adicionado com sucesso!');
+      }
+      catch(error)
+      {
+        return response(false, 'Não foi possivel associar o projeto ao usuário');
+      }
+    }
+
     find = async id =>
     {
       try

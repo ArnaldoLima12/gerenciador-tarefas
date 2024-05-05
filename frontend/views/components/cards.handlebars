@@ -14,7 +14,8 @@
                         </button>
                        
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Compartilhe</a></li>
+                            <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#{{this._id}}">Compartilhe</button></li>
+                         
                             <li><a class="dropdown-item" href="#">Editar</a></li>
                         </ul>
                     </div>
@@ -27,6 +28,8 @@
                 </div>
 
             </div>
+
+            {{>modals/modalSend id=this._id}}
         {{/each}}
     {{else}}
         <div class="flex gap-2 items-center">
@@ -43,3 +46,4 @@
         </div>
     {{/if}}
 </div>
+

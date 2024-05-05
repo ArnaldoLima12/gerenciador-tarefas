@@ -1,23 +1,14 @@
 const onDragStart = e =>
 {  
-   
-        e
-          .dataTransfer
-          .setData('text/plain', e.target.id);
-      
-        e
-          .currentTarget
-          .style
-          .backgroundColor = 'yellow';
-      
+  e.dataTransfer.setData('text/plain', e.target.id);
 }
 
-const onDragOver = (e, nextColor) =>
+const onDragOver = (e) =>
 {
-    e.preventDefault();
+  e.preventDefault();
 }
 
-const onDrop = e =>
+const onDrop = (e, nextColor) =>
 {
     const id = e
     .dataTransfer
@@ -26,16 +17,18 @@ const onDrop = e =>
     const draggableElement = document.getElementById(id);
     const dropzone = e.target;
 
-    console.log('Elemento: ',draggableElement);
-    console.log('dropzone: ',dropzone.id);
+    const drops = ['toDO','InProgress', 'Paused', 'Concluded'];
 
-    const drops = ['toDo','InProgess', 'Paused', 'Concluded']
-    // if(dropzone.id != id)
-    // {
-    //     dropzone.appendChild(draggableElement);
-    //     e
-    //     .dataTransfer
-    //     .clearData();
-    // }
-   
+    if(drops.indexOf(dropzone.id) != -1)
+    { 
+      dropzone.appendChild(draggableElement);
+      draggableElement.style.backgroundColor = nextColor;
+      e.dataTransfer.clearData();
+    }
+    else
+    {
+      console.log(drops.indexOf(dropzone.id));
+      console.log(dropzone.id);
+      e.dataTransfer.clearData();
+    }
 }

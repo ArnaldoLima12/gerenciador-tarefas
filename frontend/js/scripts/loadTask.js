@@ -24,10 +24,18 @@ const renderTask = data =>
         switch(element.status)
         {
             case 'To do':
-                containerToDO.innerHTML += createElement(element, 'red');
+                containerToDO.innerHTML += createElement(element, '#FCC8CD');
+                break;
+            case 'In Progress':
+                containerInProgress.innerHTML += createElement(element, '#FFFFBA');
+                break;
+            case 'Paused':
+                containerPaused.innerHTML += createElement(element, '#BAE1FF');
+                break;
+            case 'Concluded':
+                containerConcluded.innerHTML += createElement(element, '#BAFFC9');
                 break;
             }
-
     });
 }
 
@@ -35,7 +43,7 @@ const renderTask = data =>
 const createElement = (element, color) =>
 {   
     let render = 
-    `<div ondragstart="onDragStart(event)" class='bg-${color}-200 my-2 p-2' draggable='true' id='${element._id}'>
+    `<div ondragstart="onDragStart(event)" style='background-color: ${color}' class='cursor-grab my-2 p-2' draggable='true' id='${element._id}'>
         <p class='font-bold'>${element.title}</p>
         <p class=''>${element.description}</p>
     </div>`;

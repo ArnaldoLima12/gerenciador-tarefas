@@ -166,12 +166,23 @@
     backface-visibility: hidden;
   }
   
-  .flip-card-front {
-    
-  }
-  
   .flip-card-back {
-    
     transform: rotateY(180deg);
+  }
+
+  ::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track
+  { 
+    background-color: rgb(219, 219, 219);  
+  }
+
+  ::-webkit-scrollbar-thumb
+  { 
+    border-radius: 4px;
+    background-color: #b393e0;
   }
 }

@@ -69,19 +69,19 @@ exports.findAllProjects = async req =>
 exports.createTask = async (req, res) =>
 {
     const {project, title, description, members, status} = req.body;
+    const arrayMembers = [].concat(members || []);
 
     const task = {
 
         project,
         title,
         description,
-        responsibles: members.length < 2? [members] : members,
+        responsibles: arrayMembers,
         status
     }
 
-    if(!title || !description || members.length < 1 || !status)
+    if(!title || !description || arrayMembers.length < 1 || !status)
     {   
-        console.log(task);
         validateAction({status: false, message: 'Todos os campos devem ser preenchidos!'}, `/home/project/content/${project}`, req, res);
         return;
     }

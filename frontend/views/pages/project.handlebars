@@ -33,8 +33,9 @@
         </div>
 
         <div class="w-5/6 border border-slate-500 rounded-md p-3 overflow-auto">
-           <div class="border-b border-slate-500">
+           <div class="border-b border-slate-500 flex justify-between gap-3">
                 <h1 class="text-xl">Quadro de tarefas</h1>
+                {{>objects/dropdownMenu id_project=project._id}}
            </div>
 
            <div class="flex justify-between flex-grow gap-2 min-h-80">

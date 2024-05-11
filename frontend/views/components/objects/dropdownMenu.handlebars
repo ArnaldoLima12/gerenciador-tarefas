@@ -1,0 +1,32 @@
+<div class="{{{color}}} text-center uppercase flex justify-between" role="group" >
+    <button type="button" class="hover:cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-three-dots-vertical"></i>
+    </button>
+                                            
+    <ul class="dropdown-menu">
+        <li class="dropdown-item"><button data-bs-toggle="modal" data-bs-target="#task">Nova tarefa</button></li>
+        <li class="dropdown-item"><button data-bs-toggle="modal" data-bs-target="#clear-task">Limpar tarefas</button></li>
+    </ul>
+</div>  
+
+<!-- Modal ClearTasks -->
+<div class="modal fade" id="clear-task" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Limpar Tarefas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Deseja realmente limpar todas as tarefas?</h2>
+
+        <div class="flex gap-3 justify-center items-center mt-4">
+            <button class="btn bg-red-300 w-2/6 hover:bg-red-400" id="btn-clear-yes" value="{{id_project}}" data-bs-dismiss="modal">Sim</button>
+            <button class="btn bg-green-300 w-2/6 hover:bg-green-400" id="btn-clear-no" data-bs-dismiss="modal">Não</button>
+        </div> 
+
+      </div>
+     
+    </div>
+  </div>
+</div>

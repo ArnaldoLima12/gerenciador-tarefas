@@ -1,3 +1,6 @@
+const btn_y = document.getElementById('btn-clear-yes');
+
+
 const onDragStart = e =>
 {  
   e.dataTransfer.setData('text/plain', e.target.id);
@@ -42,3 +45,16 @@ const resave = (status, taskId) =>
     body: JSON.stringify({status, taskId})
   })
 }
+
+const clear = async (value, type) =>
+{
+    fetch('/home/project/task-clearAll', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({value, type})
+    });
+
+    loadData();
+}
+
+btn_y.addEventListener('click', () => clear(btn_y.value, 'project'));

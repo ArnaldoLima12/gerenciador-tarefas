@@ -13,3 +13,10 @@ exports.resave = async (req, res) => {
     await new Task().resave(status, taskId);
     return;
 }
+
+exports.clearAll = async (req, res) =>
+{
+    const {value, type} = req.body;
+    await new Task().clearAll(value, type);
+    return;
+}

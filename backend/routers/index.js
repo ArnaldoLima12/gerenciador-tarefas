@@ -19,6 +19,7 @@ Router.post('/project/create-task', auth, Project.createTask);
 /**ROTAS DE TAREFAS*/
 Router.get('/project/task-load/:identifier', auth, Task.load);
 Router.post('/project/task-resave', auth, Task.resave);
+Router.post('/project/task-clearAll', auth, Task.clearAll);
 
 
 module.exports = Router;

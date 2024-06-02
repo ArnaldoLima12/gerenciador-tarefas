@@ -11,7 +11,6 @@
     "type": "git",
     "url": "git+https://github.com/ArnaldoLima12/gerenciador-tarefas.git"
   },
-  "author": "Geane de Almeida, Davi Lucas, Rafael de Sousa, Gabriel Alves, Arnaldo Lima",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ArnaldoLima12/gerenciador-tarefas/issues"
